@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Image, ImageSourcePropType} from "react-native";
+import { StyleSheet, View, Image, ImageSourcePropType, TouchableOpacity } from "react-native";
+import { Entypo } from '@expo/vector-icons';
+
 
 interface ProfileImage {
     id: string;
@@ -19,7 +21,11 @@ const RenderProfileImage = ({ profileImage }: ProfileImageProps) => {
                     style={styles.profileimage}
                 />
             ) : (
-                <View style={styles.noimage}></View>
+                <View style={styles.noimage}>
+                    <TouchableOpacity style={styles.plusiconcontainer}>
+                        <Entypo name="plus" size={30} color="#319ECD"/>
+                    </TouchableOpacity>
+                </View>
             )}
         </View>
     );
@@ -38,6 +44,11 @@ const styles = StyleSheet.create({
       backgroundColor: "lightgray",
       height: 200,
       width: 110
+    },
+    plusiconcontainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     }
 });
 
