@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Image, TouchableOpacity, Platform } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import * as ImageManipulator from "expo-image-manipulator";
-import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function ImageUploader() {
     const [image, setImage] = useState("");
@@ -52,7 +52,11 @@ export default function ImageUploader() {
                 </TouchableOpacity>
             ) : (
                 <TouchableOpacity onPress={uploadImage} style={styles.noimage}>
-                    <Entypo name="plus" size={30} color="#319ECD"/>
+                    <FontAwesome
+                        name="plus"
+                        size={20}
+                        color="#319ECD"
+                    />
                 </TouchableOpacity>
             )}
         </View>

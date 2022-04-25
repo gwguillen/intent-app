@@ -5,7 +5,7 @@ import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import ProfileImageList from "../components/ProfileImageList";
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function EditProfileScreen({ navigation }: RootTabScreenProps<'EditProfile'>) {
   const [image, setImage] = useState("");
   //TODO: Create component for profile images
   return (
