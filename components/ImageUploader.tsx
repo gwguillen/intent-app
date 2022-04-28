@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function ImageUploader() {
     const [image, setImage] = useState("");
-    
+
     //Request camera roll permissions
     useEffect(() => {
         (async () => {
@@ -19,32 +19,32 @@ export default function ImageUploader() {
                 }
             }
         })();
-      }, []);
-    
+    }, []);
+
     const uploadImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [1, 1],
-          });
-      
-          if (!result.cancelled) {
+        });
+
+        if (!result.cancelled) {
             var resizedImage = await ImageManipulator.manipulateAsync(
-              result.uri,
-              [{ resize: { width: 50, height: 50 } }],
-              { base64: true }
+                result.uri,
+                [{ resize: { width: 50, height: 50 } }],
+                { base64: true }
             );
             var imageBase64 = resizedImage.base64 ?? "";
             setImage(result.uri);
-          }
+        }
     }
-    
+
     return (
-        <View>
-            
-            { image ? (
+        <View style={styles.imageUploader}>
+
+            {image ? (
                 <TouchableOpacity onPress={uploadImage}>
-                    <Image 
+                    <Image
                         resizeMode="cover"
                         source={{ uri: image }}
                         style={styles.avatarBig}
@@ -60,12 +60,18 @@ export default function ImageUploader() {
                 </TouchableOpacity>
             )}
         </View>
-        
-            
+
+
     );
 }
 
 const styles = StyleSheet.create({
+    imageUploader: {
+        height: 200,
+        width: 110,
+        marginVertical: 8,
+        marginHorizontal: 8
+    },
     noimage: {
         flex: 1,
         alignItems: "center",
